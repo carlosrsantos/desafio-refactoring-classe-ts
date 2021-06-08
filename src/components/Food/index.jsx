@@ -14,6 +14,7 @@ class Food extends Component {
     };
   }
 
+  //Muda avaible para false
   toggleAvailable = async () => {
     const { food } = this.props;
     const { isAvailable } = this.state;
