@@ -17,25 +17,26 @@ interface FoodsContextData{
 }
 
 
- export function Food({children}: FoodsProviderProps){
+
+export function Food({children}: FoodsProviderProps){
   const [foods, setFoods] = useState<Food[]>([]);
+  const[available, setAvailable] = useState(true);
+  const { food, handleEditFood } = useState([]);
 
   useEffect(()=>{
     api.get('foods')
       .then(response => setFoods(response.data.foods))
   },[]);
 
-  async function toogleAvailable(foodInput : FoodInput) {
-    
-    const[available, setAvailable] = useState(true);
-    // const isAvailable = false;
+  async function toogleAvailable(foodInput : FoodInput) {   
+    const isAvailable = false;
 
     const response = await api.put(`/foods/${foodInput.id}`,{
       ...foodInput,
       //fazer verificação aqui
-      available: false      
+      available: isAvailable      
     })
-    setAvailable(false);
+    setAvailable(isAvailable);
 
     const {food} = response.data;
 
@@ -44,14 +45,12 @@ interface FoodsContextData{
   }
 
   function setEditingFood() {
-    const { food, handleEditFood } = useState();
-
     handleEditFood(food);
   }
 
    return (
      
-     <Container available={isAvailable}>
+     <Container available={true}>
        <header>
          <img src={food.image} alt={food.name} />
        </header>
