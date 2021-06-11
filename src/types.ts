@@ -1,4 +1,4 @@
-export interface Food{
+export interface FoodType{
   id: number;
   name: string;
   description: string;
@@ -7,4 +7,4 @@ export interface Food{
   image: string;
 }
 
-export type FoodInput = Omit<Food, 'id'|'available'>;
+export type FoodInput = Omit<FoodType, 'id'|'available'>;

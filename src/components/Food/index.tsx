@@ -5,12 +5,13 @@ import { Container } from './styles';
 import api from '../../services/api';
 
 import { useFoods } from '../../hooks/useFoods';
-import { Food } from '../../types';
+import { FoodType } from '../../types';
 
 interface FoodProps {
-  food: Food;
+  food: FoodType;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export function Food({ food }:FoodProps) {
   const { handleEditFood, handleDeleteFood } = useFoods();
   const { available } = food;

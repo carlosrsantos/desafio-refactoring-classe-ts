@@ -9,14 +9,14 @@ import {
 } from 'react';
 import api from '../services/api';
 
-import { Food, FoodInput } from '../types';
+import { FoodType, FoodInput } from '../types';
 
 interface FoodsContextData {
-    foods: Food[];
+    foods: FoodType[];
     handleAddFood: (food: FoodInput) => Promise<void>;
-    handleUpdateFood: (food: Food) => Promise<void>;
+    handleUpdateFood: (food: FoodType) => Promise<void>;
     handleDeleteFood: (id: number) => Promise<void>;
-    handleEditFood: (food: Food) => void;
+    handleEditFood: (food: FoodType) => void;
     toggleModal: () => void;
     toggleEditModal: () => void;
     modalOpen: boolean;
@@ -32,8 +32,8 @@ interface FoodsProviderProps {
 }
 
 export function FoodsProvider({ children }: FoodsProviderProps) {
-    const [foods, setFoods] = useState<Food[]>([]);
-    const [editingFood, setEditingFood] = useState({} as Food);
+    const [foods, setFoods] = useState<FoodType[]>([]);
+    const [editingFood, setEditingFood] = useState({} as FoodType);
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
@@ -63,7 +63,7 @@ export function FoodsProvider({ children }: FoodsProviderProps) {
         }
     }
 
-    async function handleUpdateFood (food: Food) {
+    async function handleUpdateFood (food: FoodType) {
         try {
             const foodUpdated = await api.put(
             `/foods/${editingFood.id}`,
@@ -88,7 +88,7 @@ export function FoodsProvider({ children }: FoodsProviderProps) {
         setFoods(foodsFiltered);
     }
 
-    function handleEditFood (food: Food) {
+    function handleEditFood (food: FoodType) {
         setEditingFood(food);
         setEditModalOpen(true);
     }

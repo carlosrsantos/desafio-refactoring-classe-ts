@@ -23,6 +23,14 @@
       "price": "25.90",
       "available": false,
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    },
+    {
+      "image": "https://www.youtube.com/watch?v=XARKwLO2Zjw",
+      "name": "Macarrom",
+      "price": "23.50",
+      "description": "Macarrão com molho e queijo",
+      "available": true,
+      "id": 4
     }
   ]
 }
